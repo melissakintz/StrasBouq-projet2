@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Choisi ton bouquet - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="uk-child-width-1-4@m uk-grid-small uk-grid-match uk-margin-xlarge-right uk-margin-xlarge-left uk-margin-large-top uk-margin-medium-bottom uk-padding-remove uk-flex-wrap" uk-grid>
+
+        {% for bouquet in total %}
+            <div>
+                <div class="uk-border-rounded uk-card-hover uk-card uk-card-default ">
+                    <div class="uk-card-media-top uk-padding-remove-bottom ">
+                        <a href="#"> <img src="/assets/images/{{ bouquet.image }}" alt="{{ bouquet.name }}" class="uk-height-medium uk-align-center">
+                    </div>
+                    <div class="uk-card-body uk-padding-remove">
+                        <h3 class="uk-card-title uk-text-center">{{ bouquet.name }} {{ bouquet.total }}€</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="uk-border-rounded uk-button uk-button-default uk-align-center" href="/Panier/addBouquetVitrine/{{ bouquet.bouquetVitrine_id }}">Ajouter au panier</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

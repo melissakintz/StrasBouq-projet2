@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="uk-flex uk-flex-middle uk-flex-column" uk-grid>
+    <div class="uk-margin-large-top">
+        <h2>Gestion stock</h2>
+            <ul class="uk-list uk-list-hyphen">
+                <li><a href="/Stock/index">Tous les produits</a></li>
+                <li><a href="/Stock/add">Ajouter un produit</a></li>
+            </ul>
+    <div>
+    <div>
+        <h2>Gestion bouquet vitrine</h2>
+            <ul class="uk-list uk-list-hyphen">
+                <li><a href="/BouquetVitrine/index">Tous les bouquets vitrine</a></li>
+                <li><a href="/BouquetVitrine/add">Creer un bouquet vitrine</a></li>
+            </ul>
+    <div>
+    <div>
+        <h2>Gestion compte client </h2>
+            <ul class="uk-list uk-list-hyphen">
+                <li><a href="/Customer/index">Tous les compte client</a></li>
+                <li><a href="/Customer/add">Creer un compte client</a></li>
+            </ul>
+    <div>
+    <div>
+        <h2>Gestion commandes</h2>
+            <ul class="uk-list uk-list-hyphen">
+                <li><a href="/CommandStatus/showActiveCommand">Commandes en cours</a></li>
+                <li><a href="/CommandStatus/showArchiveCommand">Commandes archivées</a></li>
+                <li><a href="/Command/add">creer une commande</a></li>
+            </ul>
+    <div>
+
+
+{% endblock %}

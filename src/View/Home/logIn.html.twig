@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+<!-- Made by Mélissa Kintz-->
+
+{% block title %} Connexion - {{ parent() }} {% endblock %}
+
+{% block content %}
+    <ul>
+        {% if message is defined %}
+            <li> {{ message }} </li>
+        {% endif %}
+    </ul>
+
+    {% if session.login is defined %}
+        <p class ="uk-text-center">Vous êtes déjà connecté avec l'email suivante : {{ session.login }}</p>
+        <p class ="uk-text-center"><a href="/Connexion/deconnexion">Déconnexion</a></p>
+    {% else %}
+
+    <!-- form connection-->
+    <form method="post" action="/connexion/connect" class="uk-form-width-medium uk-align-center">
+        <fieldset class="uk-fieldset">
+            <legend class="uk-legend uk-text-center">Connexion</legend>
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                <input required class="uk-input uk-border-rounded" type="email" name = "email" placeholder="Email"><br/>
+            </div>
+
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                <input required class="uk-input uk-border-rounded" type="password" name = "password" placeholder="Mot de passe"><br/>
+            </div>
+
+            <div class="uk-block uk-margin">
+                <input class="uk-input uk-form-width-small uk-border-rounded" type="submit" value="Connexion">
+            </div>
+        </fieldset>
+    </form>
+    <p class="uk-text-center">Pas encore inscrit ? <a href="/Home/signIn">Inscription</a></p>
+    {% endif %}
+
+
+{% endblock %}

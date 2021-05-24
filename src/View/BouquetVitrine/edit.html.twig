@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Modifier le bouquet : {{ bouquetVitrine.name }}</h1>
+    <ul>
+        {% for fleur in bouquet %}
+            <li>{{ fleur.name }} {{ fleur.number }}</li>
+            <form method="post" action="/bouquetVitrine/deleteFleurBouquet/{{ fleur.id }}" >
+                <input type="hidden" value="{{ fleur.bouquetVitrine_id }}" name="bouquet">
+                <input class="uk-input uk-align-left uk-form-width-medium" type="submit" value="Désencastrer"/>
+            </form>
+        {% endfor %}
+    </ul>
+    {% include 'BouquetVitrine/_form.html.twig' %}
+    <div class="uk-padding-large uk-padding-remove-top uk-padding-remove-bottom">
+        <a  class="uk-button-primary uk-button-large" href="/bouquetVitrine/show/{{ bouquetVitrine.id }}">Back</a>
+
+    </div>
+{% endblock %}

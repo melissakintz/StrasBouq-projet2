@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="uk-flex uk-flex-middle uk-flex-column uk-padding-remove-top" uk-grid>
+    <div class="uk-width-1-2@m">
+
+        <h1>Nom : {{ bouquetVitrine.name }}</h1>
+        <p>N° identitfication : {{ bouquetVitrine.id }} | Nom : {{ bouquetVitrine.name }}</p>
+        <h2> Composition bouquet </h2>
+        <ul>
+            {% for fleur in compoBouquet %}
+                <li>Composition : {{ fleur.name }} {{ fleur.number }}</li>
+            {% endfor %}
+        </ul>
+        <div>
+            <a class="uk-button-primary uk-button-small uk-inline" href="/bouquetVitrine/edit/{{ bouquetVitrine.id }}">Edit</a>
+            <form action="/bouquetVitrine/delete/{{bouquetVitrine.id}}" method="POST" class="uk-inline">
+                <button class="uk-button-default uk-button-small">Delete</button>
+            </form>
+        </div><br/>
+        <div class=" uk-padding-remove-top uk-padding-remove-bottom">
+            <a  class="uk-button-primary uk-button-small" href="/bouquetVitrine/index"">Back</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

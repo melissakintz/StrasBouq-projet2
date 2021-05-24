@@ -1,0 +1,77 @@
+body{
+    background: #D7D8EC;
+}
+
+.button{
+    background-color: #285097;
+    color: white;
+}
+
+.uk-text-center a:hover {
+    text-decoration: none;
+    font-variant: small-caps;
+    color: #285097;
+}
+
+.uk-text-center a {
+    color: #285097;
+}
+
+p {
+    color: #285097;
+}
+
+/*navbar*/
+nav .uk-logo{
+    width: 15vw;
+}
+
+/* banner*/
+.banner{
+    text-align: center;
+    margin: 1vw 11vw 1vw 11vw;
+}
+
+.banner h1{
+    color: #373F41;
+}
+
+.banner .button{
+    color: white;
+    padding: 14px;
+}
+
+.banner .button:hover{
+    color: #666;
+    text-decoration: none;
+}
+
+/*formulaires*/
+.uk-input:hover, .uk-textarea:hover{
+    border-color: #285097;
+}
+
+
+/*Vitrine*/
+.vitrine a:hover {
+    text-decoration: none;
+    font-variant: none;
+    color: #285097;
+}
+
+/*responsive*/
+@media screen and (min-width: 1025px){
+
+}
+
+@media screen and (max-width: 1000px){
+    h1{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    h1{
+        font-size: 12px;
+    }
+}

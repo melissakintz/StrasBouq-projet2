@@ -1,0 +1,84 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block title %}Panier - {{ parent() }}{% endblock %}
+
+{% block content %}
+    <!-- Display message after a command-->
+    {% if message is defined %}
+        <ul>
+            <li>{{ message }}</li>
+        </ul>
+    {% else %}
+        <!-- Display cart -->
+        <section class="panier uk-margin-medium">
+            <h1 class="uk-text-center">Votre panier:</h1>
+            {% set total = 0.00 %}
+            <div class="uk-card uk-width-1-2@m uk-align-center">
+                {% for flowers in session.panier %}
+                    {% for flower in flowers %}
+                        {% if flower.quantity > 0 %}
+                            <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand" uk-leader="fill: -" uk-leader="media: @l">{{ flower.quantity }} x {{ flower.name }}</div>
+                                <div>{{ flower.price }} €
+                                <form action="/Panier/updateQuantity/{{ flower.id }}" method="post" class="uk-form-width-xsmall">
+                                    <input class="uk-input uk-form-width-xsmall uk-border-rounded" type="submit" value="+" name="+">
+                                    <input class="uk-input uk-form-width-xsmall uk-border-rounded" type="submit" value="-" name="-">
+                                </form>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% set total = total + flower.price %}
+                    {% endfor %}
+                {% endfor %}
+
+                <hr/>
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-expand" uk-leader="fill: -">Total</div>
+                    <div>{{ total }} €</div>
+                </div>
+
+
+                <!-- button to send command -->
+                <button class="uk-button uk-button-default uk-border-rounded uk-margin-small-right uk-align-right uk-background-blend-color" type="button" uk-toggle="target: #modal-example">Commander</button>
+                <div id="modal-example" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h2 class="uk-modal-title">Passer commande: </h2>
+                        <div class="uk-modal-body">
+                        <form action="/Command/commander" method="post">
+                            <label for="datePick"> Quand venez-vous chercher le bouquet en magasin ? <input required type="date" min="2021-04-01" name="datePick"></label><br/>
+                            <label for="timePick"> Et à quelle heure ?<input required type="time" min="08:00" max="19:00" name="timePick"></label><br/>
+                            <input type="hidden" name="totalAmount" value="{{ total }}">
+                            <input type="hidden" name="isPrepared" value="false" >
+                            <input type="hidden" name="isPick" value="false" >
+                        </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <input class="uk-border-rounded uk-button uk-button-default" type="submit" value="commander">
+                                <button class="uk-button uk-button-default uk-modal-close uk-border-rounded" type="button">Annuler</button>
+                            </div>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+                <button class="uk-button uk-button-default uk-border-rounded uk-margin-small-right uk-align-right uk-background-blend-color" type="button" uk-toggle="target: #enregistrer">Enregistrer</button>
+                <div id="enregistrer" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h2 class="uk-modal-title">Enregistrer le bouquet dans mon compte </h2>
+                        <div class="uk-modal-body">
+                            <form method="post" action="/BouquetCustomer/save">
+                                    <input type="hidden" value="{{ session.user.id }}" name="customer_id"></br>
+                                    <label for="name">Nom bouquet</label><br>
+                                    <input class="uk-input"  type="text" name="name"></br>
+                        </div>
+                        <div class="uk-modal-footer uk-text-right">
+                            <input class="uk-border-rounded uk-button uk-button-default" type="submit" value="Enregistrer">
+                            <button class="uk-button uk-button-default uk-modal-close uk-border-rounded" type="button">Annuler</button>
+                        </div>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h2> Commandes archivées</h2>
+    <table class="uk-table uk-table-striped  uk-table-responsive uk-table-small">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>date de commande</th>
+            <th>id client</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for command in archivecommand %}
+        <tr>
+            <td>{{ command.command_id }}</td>
+            <td>{{ command.datePick }}</td>
+            <td>{{ command.customer_id }}</a></td>
+            <td><a href="/stock/edit/{{ stock.id }}"><button class="uk-button uk-button-default">Voir</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <a href="/Home/compteAdmin"><button class="uk-button uk-button-default">Back</button></a>
+{% endblock %}

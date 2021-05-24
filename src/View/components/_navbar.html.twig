@@ -1,0 +1,64 @@
+<!-- Made by Mélissa Kintz-->
+
+<!-- Desktop navbar -->
+<nav class="uk-navbar-container uk-navbar-transparent uk-visible@l" uk-navbar>
+    <div class="uk-navbar-left">
+        <a href="/Home/index" class="uk-navbar-item uk-logo "><img src="/assets/images/logo.png" alt="Stras'bouq"></a>
+    </div>
+    <div class="uk-navbar-center">
+        <ul class="uk-navbar-nav">
+            <li><a href="/Home/index">Accueil</a></li>
+            <li><a href="/Home/composeBouquet">Compose ton bouquet</a></li>
+            <li><a href="/Home/choisiBouquet">Choisi ton bouquet</a></li>
+            <li><a href="/Home/contact">Contact</a></li>
+        </ul>
+    </div>
+    {% if session.login is defined %}
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="/Home/panier" class="button">Panier</a></li>
+                <li><a href="/Home/compte">Compte</a></li>
+                <li><a href="/Connexion/deconnexion">Déconnexion</a></li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="/Home/logIn">Connexion</a></li>
+                <li><a href="/Home/signIn" class="button">Inscription</a></li>
+            </ul>
+        </div>
+    {% endif %}
+</nav>
+
+<!-- Mobile navbar -->
+<nav class="uk-navbar uk-navbar-container uk-margin uk-navbar-transparent uk-hidden@l uk-margin-remove-top">
+    <div class="uk-navbar-left">
+        <button class="uk-navbar-toggle uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-nav" uk-navbar-toggle-icon></button>
+        <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-default">
+                    <li class="uk-nav-header"><a href="/Home/index">Accueil</a></li>
+                </ul>
+                <ul class="uk-nav uk-nav-default">
+                    <li><a href="/Home/composeBouquet">Compose ton bouquet</a></li>
+                    <li><a href="/Home/choisiBouquet">Choisi ton bouquet</a></li>
+                    <li><a href="/Home/contact">Contact</a></li>
+                </ul>
+                <hr/>
+                {% if session.login is defined %}
+                    <ul class="uk-nav uk-nav-default">
+                        <li><a href="/Home/panier">Panier</a></li>
+                        <li><a href="/Home/compte">Compte</a></li>
+                        <li><a href="/Connexion/deconnexion">Déconnexion</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="uk-nav uk-nav-default">
+                        <li><a href="/Home/logIn">Connexion</a></li>
+                        <li><a href="/Home/signIn">Inscription</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

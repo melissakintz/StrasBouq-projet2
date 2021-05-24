@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+<!-- Made by Mélissa Kintz-->
+
+{% block content %}
+
+    <form method="post" action="/Command/addCommandForm" class="uk-form-width-large uk-align-center">
+        <fieldset class="uk-fieldset">
+            <legend class="uk-legend">Ajouter une commande</legend>
+
+                <label for="customer_id"></label>
+                    <select name="customer_id">
+                        <option selected disabled>----Choisir un client----</option>
+                        {% for customer in customers %}
+                            <option>{{ customer.firstname }} {{ customer.lastname }}</option>
+                        {% endfor %}
+                    </select><br/>
+
+                <label for="stock_id">
+                    {% for flower in stock %}
+                        <label>{{ flower.name }}, sa quantité? <input type="number" name="stock_id[{{ flower.id }}][quantity]" value="0"></label><br/>
+                    {% endfor %}
+                </label><br/>
+                <label for="datePick"> Jour ou le bouquet est récupéré <input class="uk-date" required type="date" min="2021-04-01" name="datePick"></label><br/>
+                <label for="timePick"> L'heure ou il est récupéré<input class="uk-time" required type="time" min="08:00" max="19:00" name="timePick"></label><br/>
+
+                <input type="hidden" name="isPrepared" value="0" >
+                <input type="hidden" name="isPick" value="0" >
+
+                <input type="submit" value="Ajouter">
+        </fieldset>
+    </form>
+{% endblock %}

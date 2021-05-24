@@ -1,0 +1,44 @@
+
+    <ul>
+        {% for error in errors %}
+            <li> {{ error }} </li>
+        {% endfor %}
+    </ul>
+
+<form method="post" class="uk-form-width-large uk-align-center">
+	<input type="hidden" value="{{ customer.id }}" name="id">
+    <fieldset class="uk-fieldset">
+
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="firstname">Prénom</label>
+            <input required class="uk-input uk-border-rounded" type="text" value="{{ customer.firstname }}" name="firstname" >
+        </div>
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="lastname">Nom</label>
+            <input required class="uk-input uk-border-rounded" type="text" name="lastname" value="{{ customer.lastname }}">
+        </div>
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="email">Email</label><br>
+            <input required class="uk-input uk-border-rounded" type="email" name="email" value="{{ customer.email }}">
+        </div>
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="phone">Numéro de téléphone</label>
+            <input required class="uk-input uk-border-rounded" type="tel"  name="phone" value="0{{ customer.phone }}">
+        </div>
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="password">Mot de passe actuel</label>
+            <input required class="uk-input uk-border-rounded" type="password"  name="passwordActuel" placeholder="Mot de passe actuel">
+        </div>
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="password">Mot de passe</label>
+            <input required class="uk-input uk-border-rounded" type="password"  name="password" placeholder="Mot de passe">
+        </div>
+        <div class="uk-block uk-margin">
+            <label class ="uk-label" for="password">Confirmation mot de passe</label>
+            <input required class="uk-input uk-border-rounded" type="password"  name="passwordVerif" placeholder="Confirmation mot de passe">
+        </div>
+        <div class="uk-block uk-margin">
+            <input class="uk-input uk-form-width-small uk-border-rounded" type="submit" value="Valider">
+        </div>
+    </fieldset>
+</form>

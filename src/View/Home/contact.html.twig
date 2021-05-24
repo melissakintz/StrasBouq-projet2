@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+<!-- Made by Mélissa Kintz-->
+
+{% block title %}
+    Contactez-nous | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <p class="uk-text-center">
+        {% if envoi is defined %}
+            {{ envoi }}
+        {% endif %}
+    </p>
+
+    <!-- contact form -->
+        <form method="post" action="/Contact/contactUs" class="uk-form-width-large uk-align-center">
+            <fieldset class="uk-fieldset">
+                <legend class="uk-legend uk-text-center">
+                    Contactez-nous
+                </legend>
+                <div class="uk-block uk-margin">
+                    <input class="uk-input uk-border-rounded" required type="text" name="firstname" maxlength="255" placeholder="Indique ton prénom ici"><br/>
+                </div>
+                <div class="uk-block uk-margin">
+                    <input class="uk-input uk-border-rounded" required type="text" name="lastname" maxlength="255" placeholder="Indique ton nom ici"><br/>
+
+                </div>
+                <div class="uk-block uk-margin">
+                    <input class="uk-input uk-border-rounded" required type="email" name="email" maxlength="255" placeholder="Indique ton email ici"><br/>
+                </div>
+                <div class="uk-block uk-margin">
+                    <textarea class ="uk-textarea uk-border-rounded" required placeholder="Indique ton message ici" name="message"></textarea><br/>
+                </div>
+                <div>
+                    <input class="uk-input uk-form-width-small uk-border-rounded" type="submit" name="submit" value="Envoyer 📮">
+                </div>
+            </fieldset>
+        </form>
+{% endblock %}

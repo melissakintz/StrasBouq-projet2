@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Customer's bouquet</h1>
+    <ul>
+        {% for bouquetCustomer in bouquetCustomers %}
+            <li><a href="/bouquetCustomer/show/{{ bouquetCustomer.id }}">{{ bouquetCustomer.customer_id }}. {{ bouquetCustomer.name }} </a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/bouquetCustomer/add">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="uk-text-center uk-margin-large-top">
+        <h1>Creer un compte client</h1>
+    </div>
+    {% include 'Customer/_form.html.twig' %}
+    <div class="uk-text-center">
+        <a href="/Home/compteAdmin"><button class="uk-button uk-button-default">Back</button></a>
+        <a href="/Customer/index"><button class="uk-button uk-button-default">retour liste compte client</button></a>
+    </div>
+{% endblock %}

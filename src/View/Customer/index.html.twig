@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<div class="uk-text-center uk-margin-large-top">
+    <h1>Liste client</h1>
+</div>
+<div class="uk-flex uk-flex-middle uk-flex-column" uk-grid>
+    <div class="uk-width-1-3@m">
+    <ul class="uk-list uk-list-hyphen">
+        {% for customer in customers %}
+            <li><a href="/customer/show/{{ customer.id }}">{{ customer.id }}. {{ customer.lastname }} {{ customer.firstname }}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+</div>
+    <div class="uk-text-center uk-margin-large-top">
+        <a href="/customer/add"><button class="uk-button uk-button-default">Ajouter</button></a>
+        <a href="/Home/compteAdmin"><button class="uk-button uk-button-default">Back</button></a>
+    </div>
+{% endblock %}

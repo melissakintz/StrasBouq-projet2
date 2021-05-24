@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+<!-- Made by Mélissa Kintz-->
+
+{% block content %}
+    <form action="/Command/editCommand/{{ id }}" method="POST" class="uk-form-width-large uk-align-center">
+        {# display each flower in the order #}
+        {% for flower in stockCommand %}
+                <label class="uk-label">{{ flower.name }} </label> (quantité) <input class="uk-input" type="number" name="stock_id[{{ flower.id }}][quantity]" value="{{ flower.quantity }}">
+        {% endfor %}
+
+        {# display each flower in the stock #}
+        {% for flowers in stock %}
+            {% if flowers is not empty %}
+                <label class="uk-label">{{ flowers.name }} </label> (quantité) <input class="uk-input" type="number" name="stock_id[{{ flower.id }}][quantity]" value="0">
+            {% endif %}
+        {% endfor %}
+
+        <br/>
+
+        <label for="newDatePick"> Date à laquelle le bouquet est cherché<input class="uk-date"  type="date" min="2021-04-01" name="newDatePick"></label><br/>
+        <label for="newTimePick"> Et à quelle heure ?<input class="uk-time"  type="time" min="08:00" max="19:00" name="newTimePick"></label><hr/>
+
+        <label for="isPrepared"> Est-elle déjà préparée?
+            <select  name="isPrepared">
+                <option name="isPrepared" value="default" selected disabled>----Choisir une option-----</option>
+                <option name="isPrepared" value="false">Non</option>
+                <option name="isPrepared" value="true">Oui</option>
+            </select>
+        </label><br/>
+        <label for="isPick">Est-elle déjà récupérée?
+            <select  name="isPick">
+                <option name="isPick" value="default" selected disabled>----Choisir une option-----</option>
+                <option name="isPick" value="false">Non</option>
+                <option name="isPick" value="true">Oui</option>
+            </select>
+        </label><br/>
+
+
+        <input type="submit" value="Modifier">
+    </form>
+
+{% endblock %}

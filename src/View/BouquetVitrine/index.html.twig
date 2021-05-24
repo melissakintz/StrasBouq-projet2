@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Bouquet en vitrine</h1>
+    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match uk-margin-xlarge-right uk-margin-xlarge-left uk-margin-large-top uk-margin-medium-bottom uk-padding-remove uk-flex-wrap" uk-grid>
+        {% for bouquetVitrine in bouquetVitrines %}
+            <div>
+                <div class="uk-border-rounded uk-card-hover uk-card uk-card-default ">
+                    <div class="uk-card-media-top uk-padding-remove-bottom ">
+                        <li><a href="/bouquetVitrine/show/{{ bouquetVitrine.id }}"><p class="uk-text-center">{{ bouquetVitrine.name }}</p> <img src="/assets/images/{{ bouquetVitrine.image }}" class="uk-height-medium uk-align-center"></a></li>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <a href="/bouquetVitrine/add"><button>Ajouter</button></a>
+    <a href="/Home/compteAdmin"><button>Back</button></a>
+
+{% endblock %}

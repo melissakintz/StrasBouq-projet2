@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Modifier {{ stock.name }}</h1>
+    {% include 'Stock/_form.html.twig' %}
+    <a href="/stock/show/{{ stock.id }}">Back</a>
+{% endblock %}

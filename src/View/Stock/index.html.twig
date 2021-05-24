@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Items</h1>
+    <table class="uk-table uk-table-striped">
+    <thead>
+        <tr>
+            <th class="uk-width-small">Nom</th>
+            <th class="uk-table-shrink">quantité</th>
+            <th class="uk-table-shrink">prix</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.avalaibleNumber }}</td>
+            <td>{{ stock.price }}</a></td>
+            <td><a href="/stock/edit/{{ stock.id }}"><button class="uk-button uk-button-default">Modifier</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <div class="uk-text-center">
+        <a href="/stock/add"><button class="uk-button uk-button-default">Ajouter</button></a>
+        <a href="/Home/compteAdmin"><button class="uk-button uk-button-default">Back</button></a>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="uk-block uk-margin">
+    <h1>Modifier le bouquet : {{ bouquetCustomer.name }}</h1>
+</div>
+
+    {% include 'BouquetCustomer/_form.html.twig' %}
+    {% if session.admin == true %}
+    <a href="/BouquetCustomer/index"><button class="uk-button uk-button-default">Back</button></a>
+    {% else %}
+    <a href="/Home/compte"><button class="uk-button uk-button-default">Back</button></a>
+    {% endif %}
+        <div class="uk-block uk-margin">
+            <form action="/bouquetCustomer/delete/{{bouquetCustomer.id}}" method="POST">
+            <button class="uk-button uk-button-default">Supprimer le bouquet</button>
+            </form>
+        </div>
+
+{% endblock %}

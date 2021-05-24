@@ -1,0 +1,28 @@
+{# TODO : manage errors display #}
+    <ul>
+    {% for error in errors %}
+        <li> {{ error }} </li>
+    {% endfor %}
+    </ul>
+
+
+<form method="post" class="uk-form-width-large uk-align-center">
+        <input type="hidden" value="{{ session.user.id }}" name="customer_id"></br>
+            <fieldset class="uk-fieldset">
+                <div class="uk-block uk-margin">
+                    <label class ="uk-label" for="name">Nom bouquet</label>
+                    <input required class="uk-input uk-border-rounded" type="text" value="{{ bouquetCustomer.name }}" name="name">
+                </div>
+            <div class="uk-block uk-margin">
+        {% for flower in bouquet %}
+                <label class="uk-label">{{ flower.name }} </label> (quantité) <input class="uk-input" type="number" name="stock_id[{{ flower.id }}][quantity]" value="{{ flower.nombre }}">
+        {% endfor %}
+        {% for fleur in flowers %}
+            {% if fleur is not empty %}
+                <label class="uk-label">{{ fleur.name }} </label> (quantité) <input class="uk-input" type="number" name="stock_id[{{ fleur.id }}][quantity]" value="0">
+            {% endif %}
+        {% endfor %}
+    </div>
+	<input class="uk-input uk-form-width-small uk-border-rounded" type="submit" value="Valider">
+</form>
+

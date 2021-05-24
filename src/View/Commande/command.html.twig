@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h2> Commandes en cours</h2>
+    <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-striped  uk-table-responsive uk-table-small">
+            <thead>
+            <tr>
+                <th>identifiant commande </th>
+                <th>date de recupération </th>
+                <th>Nom client </th>
+                <th>Préparée ? </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for command in activecommand %}
+                <tr>
+                    <td>{{ command.command_id }}</td>
+                    <td>{{ command.datePick }}</td>
+                    <td><a href="/customer/show/{{ command.customer_id }}">{{ command.firstname }} {{ command.lastname }}</a></td>
+                    <td>{{ command.isprepared }}</td>
+                    <td><a href="/Command/edit/{{ command.command_id }}"><button class="uk-button uk-button-default">Modifier</button></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="/Home/compteAdmin"><button class="uk-button uk-button-default">Back</button></a>
+    </div>
+{% endblock %}

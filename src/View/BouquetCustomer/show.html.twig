@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1> ID customer {{ bouquetCustomer.customer_id }}</h1>
+    <p>Name : {{ bouquetCustomer.name }} </br> id : {{ bouquetCustomer.id }}</p>
+
+<h3>Compostion bouquet</h3>
+<ul>
+{% for flower in bouquet %}
+<li>{{ flower.nombre }} x {{flower.name}}</li>
+{% endfor %}
+</ul>
+
+    <a href="/bouquetCustomer/edit/{{ bouquetCustomer.id }}">Edit</a>
+    <form action="/bouquetCustomer/delete/{{bouquetCustomer.id}}" method="POST">
+        <button>Delete</button>
+    </form>
+    <a href="/bouquetCustomer/index">Back</a>
+{% endblock %}

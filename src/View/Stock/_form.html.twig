@@ -1,0 +1,31 @@
+{# TODO : manage errors display #}
+
+<form method="post" enctype="multipart/form-data" class="uk-form-width-large uk-align-center">
+	<input type="hidden" value="{{ stock.id }}" name="id">
+	<fieldset class="uk-fieldset">
+	    <div class="uk-block uk-margin">
+            <label class ="uk-label" for="name">Nom</label>
+            <input required class="uk-input uk-border-rounded" type="text" value="{{ stock.name }}" name="name" >
+        </div>
+		<div class="uk-block uk-margin">
+			<label class ="uk-label" for="description">Description</label>
+			<textarea class ="uk-textarea uk-border-rounded" required id="story" name="description" rows="5" cols="55"  >{{ stock.description }}
+			</textarea>
+		</div>
+		<div class="uk-block uk-margin">
+			<label class ="uk-label" for="avalaibleNumber">Quantité en stock</label>
+			<input required class="uk-input uk-border-rounded" type="number" value="{{ stock.avalaibleNumber }}" name="avalaibleNumber">
+		</div>
+		<div class="uk-block uk-margin">
+			<label class ="uk-label" for="price">Prix</label>
+			<input required class="uk-input uk-border-rounded" type="number" value="{{ stock.price }}" name="price">
+		</div>
+		<div class="uk-block uk-margin">
+			<label class ="uk-label" for="fleur">Upload ton image</label>
+			<input type="file" value="La fleur" name="fleur">
+		</div>
+		<div class="uk-block uk-margin">
+            <input class="uk-input uk-form-width-small uk-border-rounded" type="submit" value="Valider">
+        </div>
+	</fieldset>
+</form>
