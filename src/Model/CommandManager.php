@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+/* Made by Mélissa Kintz */
 class CommandManager extends AbstractManager
 {
     public const TABLE = "command";

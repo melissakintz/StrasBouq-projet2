@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+/* Made by Mélissa Kintz */
 class CommandStatusManager extends AbstractManager
 {
     public const TABLE = "commandStatus";
@@ -49,6 +50,7 @@ class CommandStatusManager extends AbstractManager
         header("Location: /Command/showAll");
     }
 
+    /* Made by Jerome Bach */
     public function archiveCommand(string $orderBy = '', string $direction = 'ASC')
     {
         $query = 'SELECT * FROM ' . static::TABLE . ' JOIN ' . static::TABLE_2 . '
